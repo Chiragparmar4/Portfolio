@@ -14,6 +14,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            
+            emailjs.init({
+              publicKey: "oobCoGRYT4E8VsucI",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('contact_service', 'contact_form', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -30,6 +54,7 @@
         <div class="menu-right">
             <a href="mailto:chiragparmar7620@gmail.com" class="menu-btn">
                 <span>Let's Talk</span>
+                <i class="ri-message-3-line"></i>
             </a>
            <div class="bx bx-menu" id="menu-icon">
             <i class="ri-menu-line"></i>
@@ -225,9 +250,11 @@
                 
             </div>
         </div>
-        <form  onsubmit="sendEmail(); reset()"       class="contact-form">
+        <form  onsubmit="sendEmail(); reset()"class="contact-form">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your email" required>
+            
+
             <textarea name="" id="" cols="30" rows="10" placeholder="Write Message here.." required></textarea>
             <input type="submit" value="Submit Now" class="submit-btn">
         </form>
