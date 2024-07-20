@@ -9,3 +9,8 @@ $('.menulist a').click(function() {
     $('.menulist a').removeClass('active');
     $(this).addClass('active');
 });
+
+document.addEventListner("contextmenu",function(e)
+                         {
+                             e.preventDefault()
+                         },false)
